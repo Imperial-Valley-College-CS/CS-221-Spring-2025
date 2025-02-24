@@ -3,7 +3,7 @@ public class PA4_ValidEmail
    public static void main(String[] args)
    {
       //scan from user: name and email
-      String name = "Olivia Ortiz";
+      String name = "Olivia Ortiz".toLowerCase();
       String email = "o.ortiz@students.imperial.edu";
       
       int space = name.indexOf(' ');   //index value of space
