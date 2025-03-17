@@ -3,10 +3,23 @@ public class Methods
    public static void main(String[] args)
    {
       double ans1 = gpa('A', 'B', 'b', 'a');      //invoke(call) gpa
-      double ans2 = gpa('C', 'c', 'A', 'B');      //invoke(call) gpa
+      double ans2 = gpa('C', 'c', 'A', 'B', 'A');      //invoke(call) gpa
       System.out.println( ans1 );
       System.out.println( ans2 );
    }//end main
+   
+   public static double gpa(char gr1, char gr2, char gr3, char gr4, char gr5)
+   {
+      double someVar = 0.0;
+      
+      someVar += getGP(gr1);
+      someVar += getGP(gr2);
+      someVar += getGP(gr3);
+      someVar += getGP(gr4); 
+      someVar += getGP(gr5);     
+      
+      return someVar/5.0;    //placeholder for now
+   }//end gpa
    
    public static double gpa(char gr1, char gr2, char gr3, char gr4)
    {
