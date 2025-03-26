@@ -27,6 +27,16 @@ public class OneDimArrays
          k++;
       }
       
+      while( j < b.length )         //grab remaining elements in b
+      {
+         c[k] = b[j]; j++; k++;
+      }
+      
+      while( i < a.length )         //grab remaining elements in a
+      {
+         c[k] = a[i]; i++; k++;
+      }
+      
       return c;      
    }//end merge
    
