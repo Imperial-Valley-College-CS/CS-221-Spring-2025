@@ -15,27 +15,17 @@ public class OneDimArrays
       int i = 0; int j = 0; int k = 0;
       int[] c = new int[a.length+b.length];
       
-      while( i < a.length && j < b.length )
-      {
-         if( a[i] <= b[j] )
-         {
-            c[k] = a[i]; i++;
-         }else
-         {
-            c[k] = b[j]; j++;
-         }
-         k++;
-      }
+      while( i < a.length && j < b.length )     //grab smallest element from a or b
+         if( a[i] <= b[j] )         
+            c[k++] = a[i++];
+         else         
+            c[k++] = b[j++];
       
       while( j < b.length )         //grab remaining elements in b
-      {
-         c[k] = b[j]; j++; k++;
-      }
+         c[k++] = b[j++];
       
       while( i < a.length )         //grab remaining elements in a
-      {
-         c[k] = a[i]; i++; k++;
-      }
+         c[k++] = a[i++];
       
       return c;      
    }//end merge
