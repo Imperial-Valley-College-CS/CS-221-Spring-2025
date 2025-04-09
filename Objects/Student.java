@@ -16,6 +16,7 @@ public class Student
       setDOB(dateOfBirth);         //initializes this.dob (GregorianCalendar)
    }
    
+   //method (getter or setter or specialized)
    private void setDOB(String date)
    {
       String[] tokens = date.split("/");     // date as mm/dd/yyyy
@@ -24,9 +25,24 @@ public class Student
       int year = Integer.parseInt(tokens[2]);
       
       this.dob = new GregorianCalendar( year, month, day );
+      setAge();
+   }   
+   
+   private void setAge()
+   {
+      //GregCal corresponds to today's date
+      GregorianCalendar today = new GregorianCalendar();
+      long t1 = this.dob.getTimeInMillis();
+      long t2 = today.getTimeInMillis();
+      double age = (double)(t2-t1)/(1000.0*60*60*24*365.25);
+      this.age = (int)age;
    }
    
-   //method (getter or setter or specialized)
+   public int getAge()
+   {
+      setAge();
+      return this.age;
+   }
    public String getName(){ return this.name; }
    
 }
