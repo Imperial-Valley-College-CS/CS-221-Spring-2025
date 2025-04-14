@@ -13,7 +13,7 @@ public class TestStudent
       for( Student x : roster )
       {
          //prints what toString method returns
-         System.out.println( x.getAge() );      
+         System.out.println( x );      
       }
    }
 }
