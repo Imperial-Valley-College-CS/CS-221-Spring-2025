@@ -1,4 +1,4 @@
-//import javafx.scene.paint.Color;
+import javafx.scene.paint.Color;
 import java.io.*;
 import java.util.*;
 
@@ -6,7 +6,7 @@ public class Invader
 {
    //data fields
    private int health, speedX, speedY;
-   //private Color color;       //need to import Color class
+   private Color color;       //need to import Color class
    private boolean isAlive;
    private boolean[][] body;
    private Position pos;
@@ -38,7 +38,7 @@ public class Invader
             String[] tokens = line.split(",");
             for( int j = 0; j < tokens.length; j++ )
             {
-               if( tokens[j] == "1" )
+               if( tokens[j].equals("1") )
                   this.body[i][j] = true;
                else
                   this.body[i][j] = false;
