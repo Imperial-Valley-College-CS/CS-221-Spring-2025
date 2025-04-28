@@ -4,5 +4,6 @@ public class TestInheritance
    {
       Person p1 = new Person("Octavio Ortiz");
       Person p2 = new Person("Laura Lopez", "female");
+      Student s1 = new Student("Jill Nel", "female", "4/28/1999", "Computer Science");
    }
 }
