@@ -1,0 +1,8 @@
+public class TestInheritance
+{
+   public static void main(String[] args)
+   {
+      Person p1 = new Person("Octavio Ortiz");
+      Person p2 = new Person("Laura Lopez", "female");
+   }
+}
