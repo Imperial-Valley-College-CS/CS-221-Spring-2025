@@ -48,5 +48,10 @@ public class Person
       this.age = (int)age;
    }
 
+   @Override
+   public String toString()
+   {
+      return String.format("Name: %s\nAge: %d\n",this.name,this.age);
+   }
    
 }

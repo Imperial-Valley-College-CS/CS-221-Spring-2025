@@ -21,7 +21,22 @@ public class Student extends Person
    private void calcGPA()
    {
       double gp = 0.0;
-      //missing code
+      
+      for( char g : this.grades )
+         switch( g )
+         {
+            case 'a':case 'A': gp += 4.0; break;
+            case 'b':case 'B': gp += 3.0; break;
+            case 'c':case 'C': gp += 2.0; break;
+            case 'd':case 'D': gp += 1.0; break;
+         }
+      
       this.gpa = gp/this.grades.length;
+   }
+   
+   @Override
+   public String toString()
+   {
+      return super.toString() + String.format("GPA: %.2f",this.gpa);
    }
 }
