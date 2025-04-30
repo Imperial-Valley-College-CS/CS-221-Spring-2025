@@ -47,6 +47,8 @@ public class Person
       double age = (double)(t2-t1)/(1000.0*60*60*24*365.25);
       this.age = (int)age;
    }
+   
+   public int getAge(){ return this.age; }
 
    @Override
    public String toString()
