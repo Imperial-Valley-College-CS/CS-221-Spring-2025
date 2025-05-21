@@ -37,9 +37,9 @@ public class App extends Application
       gc.fillRect(x,y,20,20);   
       switch(direction)
       {
-         case "RIGHT": x+=10;
-         case "LEFT": x-=10;
-         case "UP": y-=10;
+         case "RIGHT": x+=10; break;
+         case "LEFT": x-=10; break;
+         case "UP": y-=10; break;
          case "DOWN": y+=10;
       } 
    }//end drawSquare
