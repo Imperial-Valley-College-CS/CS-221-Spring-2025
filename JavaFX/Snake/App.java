@@ -18,6 +18,7 @@ public class App extends Application
    int x = 0;
    int y = 50;
    String direction = "RIGHT";
+   String prevDir = direction;
    
    @Override
    public void start(Stage s)
@@ -34,22 +35,29 @@ public class App extends Application
       gc.fillRect(0,0, Constants.WIDTH, Constants.HEIGHT);
       
       gc.setFill(Constants.COLOR_APPLE);
-      gc.fillRect(x,y,20,20);   
+      gc.fillRect(x,y,Constants.SIZE,Constants.SIZE);   
       switch(direction)
       {
-         case "RIGHT": x+=10; break;
-         case "LEFT": x-=10; break;
-         case "UP": y-=10; break;
-         case "DOWN": y+=10;
+         case "RIGHT": x+=Constants.SPEED; break;
+         case "LEFT": x-=Constants.SPEED; break;
+         case "UP": y-=Constants.SPEED; break;
+         case "DOWN": y+=Constants.SPEED;
       } 
    }//end drawSquare
    
    class Timer extends AnimationTimer
    {
+      private long last = 0;
+      private double dt = 0.016;  //time between frames
       @Override
       public void handle( long now )
       {
-         drawSquare();
+         double timeLapse = (now - last)/(1000.0*1000.0*1000.0);
+         if( timeLapse > 1*dt )
+         {
+            drawSquare();
+            last = now;
+         }
       }
    }//end Timer
    
@@ -58,8 +66,14 @@ public class App extends Application
       @Override
       public void handle( KeyEvent event )
       {
-         System.out.println( direction );
+         prevDir = direction;    //previous direction equals current direction
          direction = event.getCode().toString();
+         switch( direction )
+         {
+            case "UP": case "DOWN": case "LEFT": case "RIGHT": break;
+            default:
+               direction = prevDir;
+         }
       }
    }//end HandleKey
    
