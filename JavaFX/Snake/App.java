@@ -15,34 +15,56 @@ public class App extends Application
    Scene scene = new Scene(g, Constants.WIDTH, Constants.HEIGHT);  //needs a Parent
    Timer t = new Timer();
    HandleKey keyHandler = new HandleKey();
-   int x = 0;
-   int y = 50;
    String direction = "RIGHT";
    String prevDir = direction;
    
    @Override
    public void start(Stage s)
    {
+      createSnake();
       t.start();        //starts Timer (handle method is invoked on every frame)
       scene.setOnKeyPressed( keyHandler );      //makes keyboard come to life
       s.setScene(scene);      //stage needs a Scene
       s.show();
    }//end start
    
-   public void drawSquare()
+   public void createSnake()
    {
+      int x = 50;
+      int y = 50;
+      int numBlocks = 20;
+      int i = 0;
+      while( i < numBlocks )
+      {
+         Constants.snake.add( new Block(x-i*Constants.SIZE,y) );     //head of snake - 0
+         i++;
+      }
+   }
+   
+   public void drawSnake()
+   {
+      //paints entire Canvas black
       gc.setFill(Constants.COLOR_CANVAS);
       gc.fillRect(0,0, Constants.WIDTH, Constants.HEIGHT);
       
       gc.setFill(Constants.COLOR_APPLE);
-      gc.fillRect(x,y,Constants.SIZE,Constants.SIZE);   
+      for( Block b : Constants.snake )
+      {
+         gc.fillRect(b.getX(), b.getY(),Constants.SIZE,Constants.SIZE);  
+      }
+       
+      Block head = Constants.snake.get(0);
+      double newX = head.getX();
+      double newY = head.getY();
       switch(direction)
       {
-         case "RIGHT": x+=Constants.SPEED; break;
-         case "LEFT": x-=Constants.SPEED; break;
-         case "UP": y-=Constants.SPEED; break;
-         case "DOWN": y+=Constants.SPEED;
+         case "RIGHT": newX+=Constants.SPEED; break;
+         case "LEFT": newX-=Constants.SPEED; break;
+         case "UP": newY-=Constants.SPEED; break;
+         case "DOWN": newY+=Constants.SPEED;
       } 
+      Constants.snake.add(0,new Block( newX, newY ));       //add new head
+      Constants.snake.remove( Constants.snake.size() - 1);  //remove tail
    }//end drawSquare
    
    class Timer extends AnimationTimer
@@ -55,7 +77,7 @@ public class App extends Application
          double timeLapse = (now - last)/(1000.0*1000.0*1000.0);
          if( timeLapse > 1*dt )
          {
-            drawSquare();
+            drawSnake();
             last = now;
          }
       }

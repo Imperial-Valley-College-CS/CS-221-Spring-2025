@@ -1,4 +1,5 @@
 import javafx.scene.paint.Color;
+import java.util.ArrayList;
 
 public class Constants
 {
@@ -8,4 +9,5 @@ public class Constants
    public static Color COLOR_CANVAS = Color.BLACK;   
    public static double SPEED = 10;
    public static double SIZE = 20;
+   public static ArrayList<Block> snake = new ArrayList<>();
 }
